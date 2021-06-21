@@ -4,31 +4,50 @@ console.log('Welcome to the calculator!');
 console.log('==========================');
 console.log('Please enter operator:');
 const response3 = readline.prompt();
-console.log('Please enter first number:');
-const response = readline.prompt();
-console.log('Please enter second number:');
-const response2 = readline.prompt();
+console.log('How many numbers do you want to enter?:');
+const numb = readline.prompt();
+var a = parseInt(numb);
+let arr = Array(a);
+b=0
+for (let i = 0; i < arr.length; i++) {
+    console.log('Please enter number ' + (i+1) +':');
+    const response = readline.prompt();
+    let b= parseInt(response);
+    arr[i]=b
+    
+  }
 
 
-var num1 = parseInt(response);
-var num2 = parseInt(response2);
+
+let ans=0
 switch (response3) {
     case '+':
-        var addd = num1+num2
-        console.log(addd);
+        for (let i = 0; i < arr.length; i++) {
+            ans+=arr[i]
+        }
+
+        
         break;
     case '-':
-        var minus = num1-num2
-        console.log(minus);
+        ans=arr[0]
+        for (let i = 0; i < (arr.length-1); i++) {
+            ans-=arr[i+1]
+        }
+        
         break;
     case '*':
-        var muli = num1*num2
-        console.log(muli);
+        ans=1
+        for (let i = 0; i < arr.length; i++) {
+            ans*=arr[i]
+        }
         break;
     case '/':
-        var div=num1/num2
-        console.log(div);
+        ans=arr[0]
+        for (let i = 0; i < (arr.length-1); i++) {
+            ans/=arr[i+1]
+        }
         break;
 }
+console.log(ans);
 
 
