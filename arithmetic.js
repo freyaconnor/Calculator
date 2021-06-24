@@ -5,6 +5,7 @@ const readline = require('readline-sync');
 function EnterOP(){
     console.log('Please enter operator:');
     const response3 = readline.prompt();
+
     return response3
 }
 
@@ -27,9 +28,10 @@ function Calculation(operator, numbers) {
         return numbers.reduce((acc, curr) => acc * curr, 1);
     } else if (operator === '/') {
         return numbers.slice(1).filter(x => x !== 0).reduce((acc, curr) => acc / curr, numbers[0]);
+    }else { 
+        throw new Error('invalid operator');
     }
 }
-
 function EnteraNumber(arr) {
     b=0;
     for (let i = 0; i < arr.length; i++) {
@@ -52,6 +54,14 @@ exports.performOneArithmeticCalculation = function() {
     const response3=EnterOP();
     let ar=EnterNub()
     let arr =EnteraNumber(ar); 
-    const answer=Calculation(response3,arr);
-    console.log(`\nThe answer is ${answer}`);
+    
+    try{
+        const answer=Calculation(response3,arr);
+        console.log(`\nThe answer is ${answer}`);
+    }
+    catch(e){
+        console.log(`\n${e.message}`);
+
+    }
+    
 }
