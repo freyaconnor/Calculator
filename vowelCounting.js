@@ -9,9 +9,13 @@ function vowelcount(st, vowels){
             vowels[letter]++;
         }
     }
-    return console.log(vowels) 
+    return vowels
 }
-exports.function performOneVowelCountingCalculation(){
-    let st=enterstring();
-    vowelcount(st, vowels);
+exports.performOneVowelCountingCalculation=function() {
+    const st=userInput.enterstring();
+    const answer= vowelcount(st, vowels);
+    for (let vowel in answer) {
+        console.log(`  ${vowel}: ${answer[vowel]}`);
+    }
+
 }
